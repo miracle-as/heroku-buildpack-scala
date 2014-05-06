@@ -26,7 +26,7 @@ export GEM_PATH=$GEM_PATH:$CACHE_DIR/.gems
 
 # create default system.properties 
 if [ ! -f ${BUILD_DIR}/system.properties ]; then
-  echo "java.runtime.version=1.6" > ${BUILD_DIR}/system.properties
+  echo "java.runtime.version=1.7" > ${BUILD_DIR}/system.properties
 fi
 
 # install JDK 
@@ -61,18 +61,18 @@ done
 # these are preliminary checks. actual version check happens below when attempting to download sbt boot.properties
 if ! test -e project/build.properties; then
 	echo " !      Error, your scala project must include project/build.properties and define sbt.version"
-	echo " !      You must use a release verison of sbt, sbt.version=0.11.0 or greater"
+	echo " !      You must use a release verison of sbt, sbt.version=0.13.0 or greater"
         exit 1
 fi
 
 if ! has_supported_sbt_version ${BUILD_DIR}; then
 	echo " !      Error, you have defined an unsupported sbt.version in project/build.properties"
-	echo " !      You must use a release verison of sbt, sbt.version=0.11.0 or greater"
+	echo " !      You must use a release verison of sbt, sbt.version=0.13.0 or greater"
 	exit 1
 fi
  
 SBT_VERSION="$(get_supported_sbt_version ${BUILD_DIR})"
-SBT_JAR="sbt-launch-0.11.3-2.jar"
+SBT_JAR="sbt-launch.jar"
 SBT_PROPS="sbt-$SBT_VERSION.boot.properties"
 SBT_URL="http://s3.amazonaws.com/heroku-jvm-langpack-scala/$SBT_JAR"
 SBT_PROPS_URL="http://s3.amazonaws.com/heroku-jvm-langpack-scala/$SBT_PROPS"
