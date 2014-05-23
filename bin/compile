@@ -102,7 +102,7 @@ if [ ! -f "$SBT_BINDIR"/"$SBT_JAR" ]; then
   ## some of the downloads don't have the version in the name,
   ## fix it.
   if [ -f "sbt-launch.jar" ] ; then
-      mv -f "sbt-launch.jar" "$SBT_JAR"
+      #mv -f "sbt-launch.jar" "$SBT_JAR"
   fi
 
   cd $BUILD_DIR
